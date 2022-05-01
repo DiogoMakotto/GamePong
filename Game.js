@@ -15,4 +15,14 @@ function draw () {
     circle(EixoXbolinha, EixoYbolinha, diametro);
     EixoXbolinha += velocidadeEixoXbolinha; 
     EixoYbolinha += velocidadeEixoYbolinha; 
+
+    if (EixoXbolinha > width ||
+        EixoXbolinha < 0 ) {
+        velocidadeEixoXbolinha *= -1;
+    }
+
+    if (EixoYbolinha > height ||
+        EixoYbolinha < 0 ) {
+        velocidadeEixoYbolinha *= -1;
+    }
 }
