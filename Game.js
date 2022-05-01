@@ -1,9 +1,13 @@
+
+//var bola
 let EixoXbolinha = 300;
 let EixoYbolinha = 200;
 let diametro = 15;
+let raio = diametro / 2;
 
-let velocidadeEixoXbolinha= 6;
-let velocidadeEixoYbolinha= 6;
+//velocidade bola
+let velocidadeEixoXbolinha= 5;
+let velocidadeEixoYbolinha= 5;
 
 
 function setup() {
@@ -12,17 +16,29 @@ function setup() {
 
 function draw () {
     background(0);
+    mostraBola ();
+    movimentoBola ();
+    colusaoBola ();
+}
+
+function mostraBola() {
     circle(EixoXbolinha, EixoYbolinha, diametro);
+}
+
+function movimentoBola() {
     EixoXbolinha += velocidadeEixoXbolinha; 
     EixoYbolinha += velocidadeEixoYbolinha; 
+}
 
-    if (EixoXbolinha > width ||
-        EixoXbolinha < 0 ) {
+function colusaoBola() {
+   
+    if (EixoXbolinha + raio > width ||
+        EixoXbolinha - raio < 0 ) {
         velocidadeEixoXbolinha *= -1;
     }
 
-    if (EixoYbolinha > height ||
-        EixoYbolinha < 0 ) {
+    if (EixoYbolinha + raio > height ||
+        EixoYbolinha - raio < 0 ) {
         velocidadeEixoYbolinha *= -1;
     }
 }
