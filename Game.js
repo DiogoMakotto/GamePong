@@ -5,10 +5,15 @@ let EixoYbolinha = 200;
 let diametro = 15;
 let raio = diametro / 2;
 
-//velocidade bola
+//var velocidade bola
 let velocidadeEixoXbolinha= 5;
 let velocidadeEixoYbolinha= 5;
 
+//var raquete
+let xRaquete = 5;
+let yRaquete = 150;
+let ComprimentoRaquete = 10;
+let AlturaRaquete = 90;
 
 function setup() {
     createCanvas(600, 400);
@@ -18,7 +23,9 @@ function draw () {
     background(0);
     mostraBola ();
     movimentoBola ();
-    colusaoBola ();
+    colisaoBola ();
+    mostraRaquete ();
+    movimentoRaquete ();
 }
 
 function mostraBola() {
@@ -30,8 +37,7 @@ function movimentoBola() {
     EixoYbolinha += velocidadeEixoYbolinha; 
 }
 
-function colusaoBola() {
-   
+function colisaoBola() {
     if (EixoXbolinha + raio > width ||
         EixoXbolinha - raio < 0 ) {
         velocidadeEixoXbolinha *= -1;
@@ -41,4 +47,19 @@ function colusaoBola() {
         EixoYbolinha - raio < 0 ) {
         velocidadeEixoYbolinha *= -1;
     }
+}
+
+function mostraRaquete () {
+    rect (xRaquete, yRaquete, ComprimentoRaquete, AlturaRaquete);
+}
+
+function movimentoRaquete () {
+    if (keyIsDown(UP_ARROW)) {
+        yRaquete -= 10;
+    }
+
+    if (keyIsDown(DOWN_ARROW)) {
+        yRaquete += 10;
+    }
+
 }
