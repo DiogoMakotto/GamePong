@@ -15,6 +15,11 @@ let yRaquete = 150;
 let ComprimentoRaquete = 10;
 let AlturaRaquete = 90;
 
+//var oponente
+let xRaqueteOponente;
+let yRaqueteOponente;
+
+
 let colidiu = false;
 
 function setup() {
