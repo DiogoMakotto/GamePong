@@ -34,9 +34,10 @@ function draw () {
     mostraRaquete (xRaquete, yRaquete);
     movimentoRaquete ();
     //ColisaoRaqueteBola ();
-    ColisaoMinhaRaqueteLib ();
+    VerificaColisaoRaqueteLib (xRaquete, yRaquete);
     mostraRaquete (xRaqueteOponente, yRaqueteOponente);
     movimentaRaqueteOponente();
+    VerificaColisaoRaqueteLib(xRaqueteOponente, yRaqueteOponente);
 }
 
 function mostraBola() {
@@ -78,8 +79,8 @@ function ColisaoRaqueteBola() {
         velocidadeEixoXbolinha *= -1;
     }
 }
-function ColisaoMinhaRaqueteLib() {
-    colidiu = collideRectCircle(xRaquete, yRaquete, ComprimentoRaquete, AlturaRaquete, EixoXbolinha, EixoYbolinha, raio);
+function VerificaColisaoRaqueteLib(x, y) {
+    colidiu = collideRectCircle(x, y, ComprimentoRaquete, AlturaRaquete, EixoXbolinha, EixoYbolinha, raio);
     if (colidiu){
         velocidadeEixoXbolinha *= -1;
     }
