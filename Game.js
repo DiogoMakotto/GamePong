@@ -16,9 +16,9 @@ let ComprimentoRaquete = 10;
 let AlturaRaquete = 90;
 
 //var oponente
-let xRaqueteOponente;
-let yRaqueteOponente;
-
+let xRaqueteOponente = 585;
+let yRaqueteOponente = 150;
+let velocidadeYOponente = 150;
 
 let colidiu = false;
 
@@ -31,11 +31,12 @@ function draw () {
     mostraBola ();
     movimentoBola ();
     colisaoBola ();
-    mostraRaquete ();
+    mostraRaquete (xRaquete, yRaquete);
     movimentoRaquete ();
     //ColisaoRaqueteBola ();
     ColisaoMinhaRaqueteLib ();
-
+    mostraRaquete (xRaqueteOponente, yRaqueteOponente);
+    movimentaRaqueteOponente();
 }
 
 function mostraBola() {
@@ -59,10 +60,9 @@ function colisaoBola() {
     }
 }
 
-function mostraRaquete () {
-    rect (xRaquete, yRaquete, ComprimentoRaquete, AlturaRaquete);
+function mostraRaquete(x,y) {
+    rect(x, y, ComprimentoRaquete, AlturaRaquete);
 }
-
 function movimentoRaquete () {
     if (keyIsDown(UP_ARROW)) {
         yRaquete -= 10;
@@ -74,16 +74,18 @@ function movimentoRaquete () {
 
 }
 function ColisaoRaqueteBola() {
-    if (EixoXbolinha - raio < xRaquete + ComprimentoRaquete
-        && EixoYbolinha - raio < yRaquete + AlturaRaquete
-        && EixoYbolinha + raio > yRaquete) {
+    if (EixoXbolinha - raio < xRaquete + ComprimentoRaquete && EixoYbolinha - raio < yRaquete + AlturaRaquete && EixoYbolinha + raio > yRaquete) {
         velocidadeEixoXbolinha *= -1;
     }
 }
 function ColisaoMinhaRaqueteLib() {
-    colidiu = 
-    collideRectCircle(xRaquete, yRaquete, ComprimentoRaquete, AlturaRaquete, EixoXbolinha, EixoYbolinha, raio);
+    colidiu = collideRectCircle(xRaquete, yRaquete, ComprimentoRaquete, AlturaRaquete, EixoXbolinha, EixoYbolinha, raio);
     if (colidiu){
         velocidadeEixoXbolinha *= -1;
     }
+}
+
+function movimentaRaqueteOponente() {
+    velocidadeYOponente = EixoYbolinha - yRaqueteOponente - ComprimentoRaquete / 2 - 30;
+    yRaqueteOponente += velocidadeYOponente
 }
