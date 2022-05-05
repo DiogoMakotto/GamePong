@@ -22,6 +22,10 @@ let velocidadeYOponente = 150;
 
 let colidiu = false;
 
+//placar jogo
+let meusPontos = 0;
+let pontosOponente = 0;
+
 function setup() {
     createCanvas(600, 400);
 }
@@ -38,6 +42,8 @@ function draw () {
     mostraRaquete (xRaqueteOponente, yRaqueteOponente);
     movimentaRaqueteOponente();
     VerificaColisaoRaqueteLib(xRaqueteOponente, yRaqueteOponente);
+    incluiPlacar();  
+    marcardorPonto();
 }
 
 function mostraBola() {
@@ -89,4 +95,19 @@ function VerificaColisaoRaqueteLib(x, y) {
 function movimentaRaqueteOponente() {
     velocidadeYOponente = EixoYbolinha - yRaqueteOponente - ComprimentoRaquete / 2 - 30;
     yRaqueteOponente += velocidadeYOponente
+}
+
+function incluiPlacar() {
+  fill(255);
+  text (meusPontos, 278, 26)
+  text (pontosOponente, 321, 26)
+}  
+
+function marcardorPonto() {
+  if (EixoXbolinha > 590) {
+    meusPontos += 1;
+  }
+  if (EixoXbolinha < 10) {
+    pontosOponente += 1;
+  }
 }
