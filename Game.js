@@ -133,12 +133,12 @@ function incluiPlacar() {
 }  
 
 function marcardorPonto() {
-  if (EixoXbolinha > 590) {
-    meusPontos += 1;
-    ponto.play();
+    if (EixoXbolinha > 595) {
+      meusPontos += 1;
+      ponto.play();
+    }
+    if (EixoXbolinha < 5) {
+      pontosOponente += 1;
+      ponto.play();
+    }
   }
-  if (EixoXbolinha < 10) {
-    pontosOponente += 1;
-    ponto.play();
-  }
-}
